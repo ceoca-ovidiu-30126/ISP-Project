@@ -1,15 +1,14 @@
 package aut.utcluj.isp.ex4;
 
-import org.junit.Test;
-
 import java.util.List;
-
 import static org.junit.Assert.*;
+import org.junit.Test;
 
 /**
  * @author stefan
  */
 public class UserCartTest {
+
     @Test
     public void testCreate() {
         final UserCart userCart = new UserCart();
@@ -28,7 +27,7 @@ public class UserCartTest {
     }
 
     @Test
-    public void testRemoveProductFromCart() {
+    public void testRemoveProductFromCart() throws ProductNotFoundException {
         final Product firstProduct = new Product("p_1", 100d);
         final Product secondProduct = new Product("p_2", 200d);
         final UserCart userCart = new UserCart();
@@ -47,7 +46,7 @@ public class UserCartTest {
     }
 
     @Test(expected = ProductNotFoundException.class)
-    public void testRemoveProductFromCartThrowsExceptionWhenNoProductFound() {
+    public void testRemoveProductFromCartThrowsExceptionWhenNoProductFound() throws ProductNotFoundException {
         final UserCart userCart = new UserCart();
         userCart.removeProductFromCart("p_1");
     }
@@ -61,10 +60,10 @@ public class UserCartTest {
         userCart.addProductToCart(secondProduct, 1);
 
         try {
-            final String expectedResult = "Product id: p_1, Items: 2\n" +
-                    "Product id: p_2, Items: 1\n" +
-                    "Total price: 400.0";
-            final String cartDetails = ((ICartDetails)userCart).getCartDetails();
+            final String expectedResult = "Product id: p_1, Items: 2\n"
+                    + "Product id: p_2, Items: 1\n"
+                    + "Total price: 400.0";
+            final String cartDetails = ((ICartDetails) userCart).getCartDetails();
             assertNotNull("Cart details should not be null", cartDetails);
             assertEquals("Cart details should be the same", expectedResult, cartDetails);
         } catch (ClassCastException ex) {
