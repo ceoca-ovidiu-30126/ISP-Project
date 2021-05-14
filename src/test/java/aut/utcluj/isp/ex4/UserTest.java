@@ -1,10 +1,8 @@
 package aut.utcluj.isp.ex4;
 
-import org.junit.Test;
-
 import java.util.List;
-
 import static org.junit.Assert.*;
+import org.junit.Test;
 
 /**
  * @author stefan
@@ -21,7 +19,7 @@ public class UserTest {
     }
 
     @Test
-    public void testRemoveProductFromCart() {
+    public void testRemoveProductFromCart() throws ProductNotFoundException {
         final User user = new User(200d);
         user.addProductToCart(new Product("p_1", 100d), 2);
         user.addProductToCart(new Product("p_2", 100d), 1);
@@ -31,14 +29,13 @@ public class UserTest {
         assertEquals("Number of items should be 3", 3, productsBeforeDelete.size());
 
         user.removeProductFromCart("p_2");
-
         final List<Product> productsAfterDelete = user.getUserCart().getCardProducts();
         assertNotNull("Card products cannot be null", productsAfterDelete);
         assertEquals("Number of items should be 3", 2, productsAfterDelete.size());
     }
 
     @Test(expected = ProductNotFoundException.class)
-    public void testRemoveProductFromCartThrowsExceptionWhenProductNotFound() {
+    public void testRemoveProductFromCartThrowsExceptionWhenProductNotFound() throws ProductNotFoundException {
         final User user = new User(200d);
         user.addProductToCart(new Product("p_1", 100d), 2);
 
@@ -49,7 +46,7 @@ public class UserTest {
     }
 
     @Test
-    public void testSubmitCart() {
+    public void testSubmitCart() throws NotEnoughMoneyException {
         final User user = new User(300d);
         user.addProductToCart(new Product("p_1", 100d), 2);
         user.addProductToCart(new Product("p_2", 100d), 1);
@@ -71,7 +68,7 @@ public class UserTest {
     }
 
     @Test(expected = NotEnoughMoneyException.class)
-    public void testSubmitCartExceptionThrowsExceptionWhenUserDoesNotHaveEnoughMoney() {
+    public void testSubmitCartExceptionThrowsExceptionWhenUserDoesNotHaveEnoughMoney() throws NotEnoughMoneyException {
         final User user = new User(200d);
         user.addProductToCart(new Product("p_1", 100d), 2);
         user.addProductToCart(new Product("p_2", 100d), 1);

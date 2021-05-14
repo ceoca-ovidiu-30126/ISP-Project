@@ -30,3 +30,5 @@ hs_err_pid*
 /t/colocviu-demo/nbproject/private/
 /c1-samples/build/
 /c1-samples/nbproject/private/
+/nbproject/private/
+/build/
