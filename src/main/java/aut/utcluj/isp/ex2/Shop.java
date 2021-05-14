@@ -1,21 +1,21 @@
 package aut.utcluj.isp.ex2;
 
-
 /**
  * @author stefan
  */
 public class Shop {
+
     private String name;
     private String city;
 
     public Shop(String name, String city) {
-       this.name=name;
-       this.city=city;
+        this.name = name;
+        this.city = city;
     }
 
     public Shop(String name) {
         this.city = "";
-        this.name=name;
+        this.name = name;
     }
 
     public String getName() {
@@ -26,16 +26,15 @@ public class Shop {
         return city;
     }
 
-	@Override
-	public String toString() {
-		return "Shop: " + name + " City: " + city ;
-	}
-	
-	public boolean equals(Shop obj) {
-		if(obj.getName().equals(this.name) && obj.getCity().equals(this.city)) 
-			return true;
-		return false;
-		
-	}
-    
+    @Override
+    public String toString() {
+        return "Shop: " + name + " City: " + city;
+    }
+
+    public boolean equals(Shop obj) {
+        if (obj.getName().equals(this.name) && obj.getCity().equals(this.city)) {
+            return true;
+        }
+        return false;
+    }
 }
