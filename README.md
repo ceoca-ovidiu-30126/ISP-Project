@@ -5,9 +5,10 @@ This is a group project which replicates an online shop.
 ## Members
 
 1. Chis Iulia Maria
-2. Enyedi Ervin
-3. Matei Sergiu Florin
-4. Ceoca Ovidiu
+2. Coroi Gabriela Mery
+3. Enyedi Ervin
+4. Matei Sergiu Florin
+5. Ceoca Ovidiu
 
 ## Use Case Diagram
 Use Case Diagram for Exercise 3 Application
